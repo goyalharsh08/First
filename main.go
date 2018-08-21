@@ -1,7 +1,7 @@
 package main
 
 import {
-"log"
+
 "encoding/json"
 "github.com/gorilla/mux"
 "net/http"
@@ -73,7 +73,7 @@ type Person struct {
    router.HandleFunc("/people/{id}", GetPeople).Methods("GET")
    router.HandleFunc("/people/{id}", CreatePerson).Methods("POST")
    router.HandleFunc("/people/{id}", DeletePerson).Methods("DELETE")
-   log.Fatal(http.ListenAndServe(":8000", router))
+   //log.Fatal(http.ListenAndServe(":8000", router))
    }
    
   
