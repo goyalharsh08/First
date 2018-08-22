@@ -1,11 +1,11 @@
 package main
 
-import {
+import (
 
 "encoding/json"
 "github.com/gorilla/mux"
 "net/http"
-}
+)
 
 
 //The Person Type (more like an object)
