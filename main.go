@@ -31,7 +31,7 @@ type Person struct {
   //Display single data
   func GetPerson(w http.ResponseWriter, r *http.Request) {
   params := mux.Vars(r)
-  for_ ,item := range people {
+  for _ ,item := range people {
    if item.ID == params["id"] {
         json.NewEncoder(w).Encode(item)
             return
