@@ -1,8 +1,8 @@
 package main
 
 import (
-
 "encoding/json"
+
 "github.com/gorilla/mux"
 "net/http"
 "log"
@@ -32,7 +32,7 @@ type Person struct {
   //Display single data
   func GetPerson(w http.ResponseWriter, r *http.Request) {
   params := mux.Vars(r)
-  for _ ,item := range people {
+  for _ , item := range people {
    if item.ID == params["id"] {
         json.NewEncoder(w).Encode(item)
             return
@@ -55,7 +55,7 @@ type Person struct {
    //delete an item
    func DeletePerson(w http.ResponseWriter, r *http.Request) {
    params := mux.Vars(r)
-     for index, item := range people {
+   for index, item := range people {
    if item.ID == params["id"] {
       people = append(people[:index], people[index+1:]...)
       break
@@ -70,11 +70,14 @@ type Person struct {
    router := mux.NewRouter()
    people = append(people, Person{ID: "1", Firstname: "John", Lastname: "Doe", Address: &Address{City: "City X", State: "State X"}})
    people = append(people, Person{ID: "2", Firstname: "Koko", Lastname: "Doe", Address: &Address{City: "City Z", State: "State Y"}})
+   people = append(people, Person{ID: "3", Firstname: "Marry", Lastname: "Doe", Address: &Address{City: "City Y", State: "State Z"}})
    router.HandleFunc("/people", GetPeople).Methods("GET")
    router.HandleFunc("/people/{id}", GetPeople).Methods("GET")
    router.HandleFunc("/people/{id}", CreatePerson).Methods("POST")
    router.HandleFunc("/people/{id}", DeletePerson).Methods("DELETE")
-   log.Fatal(http.ListenAndServe(":8000", router))
+   //if err := http.ListenAndServe(":3000", router);
+   //err !=nil {
+   //log.Fatal(err)
+   //}
+   log.Fatal(http.ListenAndServe("8000",router))
    }
-   
-  
